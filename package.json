@@ -1,0 +1,27 @@
+{
+  "name": "code-minder-platform",
+  "version": "1.0.0",
+  "description": "Code Minder — AI-Powered DSA & Interview Preparation Platform",
+  "scripts": {
+    "start:server": "npm run start --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "seed": "npm run seed --prefix server",
+    "test": "npm run test --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "preview:client": "npm run preview --prefix client"
+  },
+  "keywords": [
+    "mern",
+    "dsa",
+    "interview-preparation",
+    "leetcode",
+    "gemini-ai",
+    "resume-analyzer",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "Antigravity Engineering Pair",
+  "license": "ISC"
+}

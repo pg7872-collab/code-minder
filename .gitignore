@@ -1,0 +1,17 @@
+# Code Minder - .gitignore
+
+node_modules/
+.env
+.env.local
+.env.*.local
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+uploads/
+temp/
+coverage/
+.DS_Store
+Thumbs.db
