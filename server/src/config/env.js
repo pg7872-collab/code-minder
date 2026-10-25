@@ -5,7 +5,7 @@ export const config = {
   port: process.env.PORT || 5000,
   nodeEnv: process.env.NODE_ENV || 'development',
   mongoUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/codeminder',
-  jwtSecret: process.env.JWT_SECRET || 'code_minder_development_jwt_secret_key_8492049284092840928',
+  jwtSecret: process.env.JWT_SECRET || (process.env.NODE_ENV === 'production' ? (() => { throw new Error('JWT_SECRET is required in production'); })() : 'development-only-secret-change-me'),
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
   geminiApiKey: process.env.GEMINI_API_KEY || '',
