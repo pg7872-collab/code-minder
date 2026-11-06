@@ -1,3 +1,4 @@
+import { useTheme } from '../context/ThemeContext';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -37,6 +38,7 @@ import { CountdownTimer } from '../components/contests/CountdownTimer.jsx';
 import { Toast } from '../components/common/Toast.jsx';
 
 export const DashboardPage = () => {
+  const { theme } = useTheme();
   const { user, refreshUser } = useAuth();
   const [dashboardData, setDashboardData] = useState(null);
   const [activityData, setActivityData] = useState(null);
