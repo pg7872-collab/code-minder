@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
-
+import { useTheme } from '../../context/ThemeContext.jsx';
 const navItems = [
   { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'DSA Tracker', path: '/questions', icon: Code2 },
@@ -25,6 +25,7 @@ const navItems = [
 ];
 
 export const Sidebar = ({ isCollapsed, onToggleCollapse, isMobileOpen, onCloseMobile }) => {
+  const { theme } = useTheme();
   const { user } = useAuth();
   const totalSolved = user?.stats?.totalSolved || 0;
 
@@ -110,7 +111,7 @@ export const Sidebar = ({ isCollapsed, onToggleCollapse, isMobileOpen, onCloseMo
     <>
       {/* Desktop Sidebar */}
       <aside
-        className={`hidden lg:block fixed left-0 top-16 bottom-0 z-30 bg-[#0B0F19] border-r border-slate-800 transition-all duration-300 ${
+        className={`hidden lg:block fixed left-0 top-16 bottom-0 z-30 ${theme === 'dark' ? 'bg-[#080F19] border-slate-800' : 'bg-white border-slate-200'} border-r transition-all duration-300 ${
           isCollapsed ? 'w-20' : 'w-64'
         }`}
       >

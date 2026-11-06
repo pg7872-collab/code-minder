@@ -4,7 +4,14 @@
 
 @layer base {
   body {
-    @apply bg-[#0B0F19] text-slate-100 font-sans;
+    @apply font-sans;
+    background-color: #F8FAFC;
+    color: #0F172A;
+  }
+
+  .dark body {
+    background-color: #080F19;
+    color: #E2E8F0;
   }
 }
 

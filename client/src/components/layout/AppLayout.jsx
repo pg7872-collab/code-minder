@@ -1,14 +1,16 @@
+import { useTheme } from '../../context/ThemeContext';
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar.jsx';
 import { Sidebar } from './Sidebar.jsx';
 
 export const AppLayout = () => {
+  const { theme } = useTheme();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-slate-100 flex flex-col">
+   <div className={`min-h-screen ${theme === 'dark' ? 'bg-[#080F19] text-slate-100' : 'bg-[#F8FAFC] text-slate-900'} flex flex-col`}>
       {/* Top Navigation */}
       <Navbar onToggleSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)} />
 
