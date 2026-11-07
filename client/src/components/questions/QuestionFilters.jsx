@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import { Search, Filter, RotateCcw, ArrowUpDown } from 'lucide-react';
 
 const TOPICS = [
@@ -31,8 +32,13 @@ const DIFFICULTIES = ['All', 'Easy', 'Medium', 'Hard'];
 const STATUSES = ['All', 'Solved', 'In Progress', 'Not Started'];
 
 export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
+  const { theme } = useTheme();
   return (
-    <div className="bg-[#111827] border border-slate-800/80 rounded-2xl p-4 sm:p-5 mb-6 space-y-4">
+    <div className={`border rounded-2xl p-4 sm:p-5 mb-6 space-y-4 ${
+  theme === 'dark'
+    ? 'bg-[#111827] border-slate-800'
+    : 'bg-white border-slate-200 shadow-sm'
+}`}>
       {/* Top Bar: Search + Quick Toggles */}
       <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
         {/* Search Input */}
@@ -43,8 +49,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
             placeholder="Search problems by title, pattern, or keyword..."
             value={filters.search || ''}
             onChange={(e) => onFilterChange('search', e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 text-sm transition-colors"
-          />
+           className={`w-full pl-10 pr-4 py-2.5 rounded-xl border transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-100 placeholder:text-slate-500'
+    : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
+}`}
         </div>
 
         {/* Needs Revision Quick Filter & Reset */}
@@ -84,7 +93,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
           <select
             value={filters.topic || 'All'}
             onChange={(e) => onFilterChange('topic', e.target.value)}
-            className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:border-indigo-500"
+           className={`w-full px-2.5 py-1.5 rounded-lg border text-xs transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200'
+    : 'bg-white border-slate-300 text-slate-900'
+}`}
           >
             {TOPICS.map((t) => (
               <option key={t} value={t}>
@@ -102,7 +115,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
           <select
             value={filters.difficulty || 'All'}
             onChange={(e) => onFilterChange('difficulty', e.target.value)}
-            className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:border-indigo-500"
+            className={`w-full px-2.5 py-1.5 rounded-lg border text-xs transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200'
+    : 'bg-white border-slate-300 text-slate-900'
+}`}
           >
             {DIFFICULTIES.map((d) => (
               <option key={d} value={d}>
@@ -120,7 +137,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
           <select
             value={filters.platform || 'All'}
             onChange={(e) => onFilterChange('platform', e.target.value)}
-            className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:border-indigo-500"
+           className={`w-full px-2.5 py-1.5 rounded-lg border text-xs transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200'
+    : 'bg-white border-slate-300 text-slate-900'
+}`}
           >
             {PLATFORMS.map((p) => (
               <option key={p} value={p}>
@@ -138,7 +159,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
           <select
             value={filters.status || 'All'}
             onChange={(e) => onFilterChange('status', e.target.value)}
-            className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:border-indigo-500"
+            className={`w-full px-2.5 py-1.5 rounded-lg border text-xs transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200'
+    : 'bg-white border-slate-300 text-slate-900'
+}`}
           >
             {STATUSES.map((s) => (
               <option key={s} value={s}>
@@ -160,7 +185,11 @@ export const QuestionFilters = ({ filters, onFilterChange, onReset }) => {
               onFilterChange('sortBy', sortBy);
               onFilterChange('sortOrder', sortOrder);
             }}
-            className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:border-indigo-500"
+            className={`w-full px-2.5 py-1.5 rounded-lg border text-xs transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200'
+    : 'bg-white border-slate-300 text-slate-900'
+}`}
           >
             <option value="dateSolved_desc">Date (Newest)</option>
             <option value="dateSolved_asc">Date (Oldest)</option>

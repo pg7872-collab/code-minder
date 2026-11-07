@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import {
   Code2,
   Plus,
@@ -18,6 +19,7 @@ import { TableSkeleton } from '../components/common/Skeleton.jsx';
 import { Toast } from '../components/common/Toast.jsx';
 
 export const QuestionsPage = () => {
+  const { theme } = useTheme();
   const { refreshUser } = useAuth();
   const [questions, setQuestions] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 });
@@ -187,10 +189,14 @@ export const QuestionsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
-            <span>DSA Question Tracker</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+         <p className={`text-xs sm:text-sm mt-1 ${
+  theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+}`}>
+  Organize problems across LeetCode, Codeforces, and GeeksforGeeks with revision tags.
+</p>
+          <p className={`text-xs sm:text-sm mt-1 ${
+  theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+}`}>
             Organize problems across LeetCode, Codeforces, and GeeksforGeeks with revision tags.
           </p>
         </div>
@@ -198,8 +204,11 @@ export const QuestionsPage = () => {
         <div className="flex items-center space-x-2.5">
           <button
             onClick={() => setShowTopicProgress(!showTopicProgress)}
-            className="px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-slate-200 font-semibold text-xs transition-colors flex items-center gap-1.5"
-          >
+            className={`px-3 py-2.5 rounded-xl border transition-colors ${
+  theme === 'dark'
+    ? 'bg-slate-900 border-slate-700 text-slate-200 hover:border-slate-600'
+    : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
+}`}
             <BarChart2 className="w-4 h-4 text-cyan-400" />
             <span>{showTopicProgress ? 'Hide Topic Stats' : 'Topic Completion'}</span>
           </button>
