@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import {
   ExternalLink,
   Edit2,
@@ -20,16 +21,24 @@ export const QuestionTable = ({
   onToggleStatus,
   onToggleRevision,
 }) => {
+  const { theme } = useTheme();
   if (questions.length === 0) {
     return null;
   }
-
   return (
-    <div className="bg-[#111827] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+    <div className={`border rounded-2xl overflow-hidden shadow-xl ${
+  theme === 'dark'
+    ? 'bg-[#111827] border-slate-800'
+    : 'bg-white border-slate-200'
+}`}>
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse text-sm">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-900/60 text-xs font-semibold uppercase tracking-wider text-slate-400">
+           <tr className={`border-b text-xs font-semibold uppercase tracking-wide ${
+  theme === 'dark'
+    ? 'border-slate-800 bg-slate-900/60 text-slate-400'
+    : 'border-slate-200 bg-slate-50 text-slate-600'
+}`}>
               <th className="py-3.5 px-4 w-12 text-center">Rev</th>
               <th className="py-3.5 px-4">Problem</th>
               <th className="py-3.5 px-4">Topic</th>
@@ -53,7 +62,11 @@ export const QuestionTable = ({
               return (
                 <tr
                   key={q._id}
-                  className="hover:bg-slate-800/30 transition-colors group"
+                 className={`transition-colors group ${
+  theme === 'dark'
+    ? 'hover:bg-slate-800/30'
+    : 'hover:bg-slate-50'
+}`}
                 >
                   {/* Revision Star Toggle */}
                   <td className="py-3.5 px-4 text-center">
@@ -75,7 +88,11 @@ export const QuestionTable = ({
                   {/* Title & URL */}
                   <td className="py-3.5 px-4">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors">
+                     <span className={`font-semibold transition-colors ${
+  theme === 'dark'
+    ? 'text-slate-100 group-hover:text-indigo-300'
+    : 'text-slate-900 group-hover:text-indigo-600'
+}`}>
                         {q.title}
                       </span>
                       {q.problemUrl && (
@@ -83,7 +100,11 @@ export const QuestionTable = ({
                           href={q.problemUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-indigo-400 transition-colors"
+                         className={`transition-colors ${
+  theme === 'dark'
+    ? 'text-slate-400 hover:text-indigo-300'
+    : 'text-slate-600 hover:text-indigo-600'
+}`}
                           title="Open problem link"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -99,7 +120,11 @@ export const QuestionTable = ({
 
                   {/* Topic */}
                   <td className="py-3.5 px-4">
-                    <span className="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-300 font-medium">
+                    <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+  theme === 'dark'
+    ? 'bg-slate-900 text-slate-300'
+    : 'bg-slate-100 text-slate-700'
+}`}>
                       {q.topic}
                     </span>
                   </td>
