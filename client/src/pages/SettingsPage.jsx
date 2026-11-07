@@ -229,10 +229,18 @@ export const SettingsPage = () => {
           The backend reads the <code className="text-indigo-400 font-mono">GEMINI_API_KEY</code> from your <code className="text-slate-300 font-mono">server/.env</code> file.
           When an API key is provided, resume analysis and interview simulations use live Google Gemini 1.5. If no key is set, the application operates with intelligent offline rubric evaluation.
         </p>
-        <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 font-mono text-xs text-slate-400">
-          GEMINI_API_KEY=AIzaSy...<br />
-          GEMINI_MODEL=gemini-1.5-flash
-        </div>
+       <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-300">
+  <p className="text-green-400 font-semibold">
+    ✓ Gemini API Configured
+  </p>
+  <p className="mt-2">
+    Your Gemini API key is securely stored on the backend
+    and is not displayed here.
+  </p>
+  <p className="mt-2">
+    Model: Gemini 1.5 Flash
+  </p>
+</div>
       </div>
     </div>
   );
